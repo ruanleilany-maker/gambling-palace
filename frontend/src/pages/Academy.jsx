@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { BookOpen, Brain, Compass, Sparkles, Wallet } from "lucide-react";
 import { academyModules } from "../data/academy.js";
 import "../styles/academy.css";
@@ -44,18 +45,18 @@ export default function Academy() {
                 <article className="academy-card" key={module.id}>
                   <div className="academy-card-top">
                     <div className="academy-icon"><Icon size={29} aria-hidden="true" /></div>
-                    <span className="academy-status">Próximamente</span>
+                    <span className="academy-status">{module.id === "probabilidad" ? "Disponible" : "Próximamente"}</span>
                   </div>
                   <span className="academy-category">{module.category}</span>
                   <h3>{module.title}</h3>
                   <p>{module.description}</p>
                   <div className="academy-topics"><BookOpen size={16} aria-hidden="true" /> <span>{module.topics}</span></div>
-                  <div className="academy-coming">Lecciones en preparación</div>
+                  {module.id === "probabilidad" ? <Link className="btn btn-primary academy-start" to="/academy/probabilidad">Comenzar módulo</Link> : <div className="academy-coming">Lecciones en preparación</div>}
                 </article>
               );
             })}
           </div>
-          <p className="academy-note">Las lecciones y actividades de cada módulo estarán disponibles en próximas etapas.</p>
+          <p className="academy-note">Los módulos de Finanzas y Decisiones estarán disponibles en próximas etapas.</p>
         </div>
       </section>
     </main>

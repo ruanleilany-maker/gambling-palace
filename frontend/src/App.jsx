@@ -6,6 +6,7 @@ import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Games from "./pages/Games.jsx";
 import Academy from "./pages/Academy.jsx";
+import ProbabilityModule from "./pages/ProbabilityModule.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
 const pending = {
@@ -45,6 +46,7 @@ export default function App() {
 
         <Route path="/games" element={<Games />} />
         <Route path="/academy" element={<Academy />} />
+        <Route path="/academy/probabilidad" element={<ProbabilityModule />} />
 
         {Object.entries(pending).map(
           ([path, [title, description]]) => (
