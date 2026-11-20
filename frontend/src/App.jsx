@@ -12,7 +12,7 @@ import { probabilityLessons } from "./data/probabilityLessons.js";
 import { financeLessons } from "./data/financeLessons.js";
 import { decisionLessons } from "./data/decisionLessons.js";
 import ComingSoon from "./pages/ComingSoon.jsx";
-import { Progress, Impact, Contact } from "./pages/ProjectPages.jsx";
+import { Progress, Impact, Contact, Privacy } from "./pages/ProjectPages.jsx";
 import { Account, Admin } from "./pages/Account.jsx";
 
 
@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/progress" element={<Progress />} />
         <Route path="/impacto" element={<Impact />} />
         <Route path="/contacto" element={<Contact />} />
+        <Route path="/privacidad" element={<Privacy />} />
         <Route path="/academy/probabilidad" element={<AcademyModule key="probabilidad" title="Probabilidad sin mitos" lessons={probabilityLessons} completionText="Terminaste las tres lecciones de Probabilidad sin mitos. Cada idea es una herramienta para pensar con más claridad sobre el azar." />} />
         <Route path="/academy/finanzas" element={<AcademyModule key="finanzas" title="Finanzas en acción" lessons={financeLessons} completionText="Terminaste las tres lecciones de Finanzas en acción. Ya tienes herramientas para planificar, priorizar y ahorrar con una meta." />} />
 
