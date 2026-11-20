@@ -1,0 +1,312 @@
+
+/* PALACE AI - ROYAL PALACE */
+
+.ai-page {
+  min-height: 100vh;
+  background: #0B0A0F;
+  color: #F5EFE3;
+}
+
+.ai-section {
+  background:
+    radial-gradient(
+      ellipse at 80% 15%,
+      rgba(95, 35, 150, 0.2),
+      transparent 45%
+    ),
+    #0B0A0F;
+}
+
+.ai-container {
+  max-width: 1050px;
+}
+
+/* ENCABEZADO */
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.ai-header h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  margin: 20px 0;
+}
+
+.ai-header h1 span {
+  color: #F1D67A;
+}
+
+.ai-header h2 {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  margin-bottom: 20px;
+}
+
+.ai-header p {
+  color: #C9C2B8;
+  line-height: 1.8;
+}
+
+/* CONTENEDOR DEL CHAT */
+
+.ai-chat {
+  background: #17121F;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 55px rgba(0, 0, 0, 0.25);
+}
+
+.ai-chat-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  background: #21182D;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.ai-bot-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: #F1D67A;
+  background: #2B103D;
+  border-radius: 13px;
+}
+
+.ai-chat-top strong {
+  display: block;
+  color: #F1D67A;
+}
+
+.ai-chat-top small {
+  display: block;
+  color: #C9C2B8;
+  margin-top: 5px;
+}
+
+.ai-clear {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid #57436C;
+  border-radius: 9px;
+  padding: 10px;
+  color: #C9C2B8;
+}
+
+.ai-clear:hover {
+  color: #F1D67A;
+  border-color: #D4AF37;
+}
+
+/* MENSAJES */
+
+.ai-messages {
+  height: 380px;
+  overflow-y: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ai-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ai-message-bot > svg {
+  flex-shrink: 0;
+  color: #F1D67A;
+  margin-top: 12px;
+}
+
+.ai-bubble {
+  max-width: 78%;
+  padding: 18px 22px;
+  border-radius: 15px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.ai-message-bot .ai-bubble {
+  background: #2B203A;
+  color: #F5EFE3;
+  border-top-left-radius: 4px;
+}
+
+.ai-message-bot strong {
+  display: block;
+  color: #F1D67A;
+  margin-bottom: 10px;
+}
+
+.ai-message-bot p + p {
+  margin-top: 12px;
+}
+
+.ai-message-user {
+  justify-content: flex-end;
+}
+
+.ai-message-user .ai-bubble {
+  background: #D4AF37;
+  color: #110B0F;
+  border-bottom-right-radius: 4px;
+}
+
+/* PARTE INFERIOR */
+
+.ai-bottom {
+  padding: 25px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  background: #1B1525;
+}
+
+.ai-suggestions-title {
+  color: #C9C2B8;
+  font-size: 0.85rem;
+  margin-bottom: 13px;
+}
+
+.ai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.ai-suggestions button {
+  background: #2B203A;
+  border: 1px solid #604B79;
+  border-radius: 25px;
+  padding: 10px 14px;
+  color: #E9D8FF;
+  font-size: 0.78rem;
+  text-align: left;
+}
+
+.ai-suggestions button:hover {
+  background: #38274B;
+  border-color: #D4AF37;
+}
+
+/* FORMULARIO */
+
+.ai-form label {
+  display: block;
+  color: #C9C2B8;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.ai-input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.ai-input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  background: #120F19;
+  border: 1px solid #604B79;
+  border-radius: 10px;
+  color: #F5EFE3;
+  outline: none;
+}
+
+.ai-input-row input:focus {
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.ai-input-row input::placeholder {
+  color: #A89BB3;
+}
+
+.ai-input-row button {
+  width: 55px;
+  border: none;
+  border-radius: 10px;
+  background: #D4AF37;
+  color: #110B0F;
+  display: grid;
+  place-items: center;
+}
+
+.ai-input-row button:hover {
+  background: #F1D67A;
+}
+
+.ai-input-row button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ai-disclaimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+  color: #AFA3B9;
+  font-size: 0.72rem;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.ai-disclaimer svg {
+  flex-shrink: 0;
+  color: #D4AF37;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 700px) {
+  .ai-header {
+    margin-bottom: 35px;
+  }
+
+  .ai-chat-top {
+    padding: 16px;
+  }
+
+  .ai-messages {
+    height: 350px;
+    padding: 16px;
+  }
+
+  .ai-bubble {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .ai-bottom {
+    padding: 16px;
+  }
+
+  .ai-suggestions {
+    flex-direction: column;
+  }
+
+  .ai-suggestions button {
+    width: 100%;
+  }
+
+  .ai-input-row button {
+    width: 48px;
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-page button {
+    transition: none;
+  }
+}
