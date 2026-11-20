@@ -44,7 +44,7 @@ npm run build
 
 El frontend se publica mediante GitHub Pages. El servidor requiere un alojamiento independiente, con HTTPS y la clave configurada como variable privada. La base de datos necesita almacenamiento persistente para conservar cuentas y progreso. La configuración está descrita en [backend/README.md](backend/README.md).
 
-El enlace público existente es [Gambling Palace](https://ruanleilany-maker.github.io/gambling-palace/). La versión más reciente está en una rama de revisión y aún debe incorporarse a la versión publicada.
+El enlace público existente es [Gambling Palace](https://ruanleilany-maker.github.io/gambling-palace/). Las actualizaciones se preparan en una rama de revisión y se publican desde la rama principal.
 
 ## Consideraciones para la presentación
 
