@@ -71,6 +71,15 @@ export async function installAccounts(app) {
   });
   app.get('/api/me', authenticate, (req, res) => res.json({ user: userView(req.user) }));
   app.post('/api/logout', authenticate, (req, res) => { sessions.delete(req.sessionKey); res.json({ ok: true }); });
+  app.delete('/api/account', authenticate, authLimit, async (req, res) => {
+    const password = req.body?.password;
+    if (typeof password !== 'string' || !password || password.length > 128) return res.status(400).json({ error: 'Introduce tu contraseña.' });
+    const user = db.prepare('SELECT password_hash FROM users WHERE id = ?').get(req.user.id);
+    if (!user || !(await passwordMatches(password, user.password_hash))) return res.status(401).json({ error: 'Contraseña incorrecta.' });
+    db.prepare('DELETE FROM users WHERE id = ?').run(req.user.id);
+    for (const [key, session] of sessions) if (session.userId === req.user.id) sessions.delete(key);
+    res.json({ ok: true });
+  });
   app.get('/api/progress', authenticate, (req, res) => {
     const rows = db.prepare('SELECT activity_id AS id, title, detail, completed_at AS date FROM progress WHERE user_id = ? ORDER BY completed_at DESC').all(req.user.id);
     res.json({ items: rows });
