@@ -6,11 +6,15 @@ El servidor conserva `/api/health` y ofrece `POST /api/ai`. Usa Node 24 y npm.
 2. En `backend`, ejecuta `npm run dev`. En otra terminal, en `frontend`, ejecuta `npm install` y `npm run dev`. Vite redirige `/api` al servidor local en el puerto 3001. Abre la dirección que indique Vite y entra en Palace AI.
 3. `npm run build` en `frontend` verifica el compilado.
 
-El modelo configurable por defecto es `gemini-3.5-flash-lite`. Google ofrece un nivel gratuito sujeto a disponibilidad y límites; revisa tu proyecto en Google AI Studio y los precios actuales en https://ai.google.dev/gemini-api/docs/pricing. No actives facturación de pago si no deseas cargos. Si habilitas un plan de pago, el uso puede generar cargos. Google indica que el contenido del nivel gratuito puede utilizarse para mejorar sus productos; no envíes datos personales. No se ha efectuado ninguna llamada a Gemini.
+El modelo configurable por defecto es `gemini-3.5-flash-lite`. Google ofrece un nivel gratuito sujeto a disponibilidad y límites; revisa tu proyecto en Google AI Studio y los precios actuales en https://ai.google.dev/gemini-api/docs/pricing. No actives facturación de pago si no deseas cargos. Si habilitas un plan de pago, el uso puede generar cargos. Google indica que el contenido del nivel gratuito puede utilizarse para mejorar sus productos; no envíes datos personales. La conexión se ha probado localmente.
 
 GitHub Pages solo aloja el frontend: para publicar la IA necesitas alojar Node en otro servicio HTTPS, con la clave configurada en las variables privadas del servicio. Define `HOST=0.0.0.0`, usa el puerto que proporcione el servicio y establece `ALLOWED_ORIGINS` con el origen exacto de Pages, por ejemplo `https://usuario.github.io`. En el frontend define `VITE_API_BASE_URL` con la URL HTTPS del backend antes de compilar; esta URL es pública, no pongas claves allí. Revisa también los costos del alojamiento.
 
 La protección de cinco solicitudes por minuto por dirección es básica, en memoria y por proceso; se reinicia y no sirve como límite global en múltiples instancias. Si se publica, añade autenticación, cuotas compartidas y límites de gasto; CORS no impide llamadas directas. Tras un proxy, configura la identificación de IP de forma segura según el proveedor. Las instrucciones al modelo reducen respuestas inapropiadas, pero no garantizan bloquearlas: se requieren pruebas y controles adicionales antes del uso público por menores. No introduzcas datos personales; el proveedor procesa las preguntas. Las preguntas se envían individualmente, sin historial de conversación.
+
+## Restricción de edad de Gemini
+
+Las condiciones actuales de Gemini API indican que no se use el servicio en aplicaciones dirigidas a menores de 18 años o que probablemente sean accedidas por ellos. Este proyecto está dirigido a jóvenes desde 15 años: no publiques Palace AI con Gemini para ese público. Se debe elegir un proveedor compatible con ese uso o reconsiderar el público y acceso antes de publicar. Un aviso o una simple casilla no demuestra que se cumplan las condiciones. Consulta https://ai.google.dev/gemini-api/terms.
 
 ## Cuentas, progreso y administración
 
