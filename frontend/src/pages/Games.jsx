@@ -120,7 +120,9 @@ if (playing && currentGame?.id === "presupuesto") {
 
                 <p>
                   Cada explicación es una oportunidad para
-                  comprender mejor las probabilidades.
+                  comprender mejor {currentGame.id === "codigo"
+                    ? "la lógica y la deducción."
+                    : "las probabilidades."}
                 </p>
 
                 <div className="pg-actions">

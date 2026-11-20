@@ -55,7 +55,26 @@ export const games = [
     duration: "5 minutos",
     description:
       "Resuelve acertijos utilizando pistas, deducciones y razonamiento lógico.",
-    available: false,
-    questions: []
+    available: true,
+    questions: [
+      {
+        prompt: "La puerta tiene un código de tres cifras distintas. La primera es 2; la segunda es el doble de la primera; la tercera es una unidad mayor que la segunda. ¿Cuál es el código?",
+        options: ["245", "254", "246"],
+        correctIndex: 0,
+        explanation: "La primera cifra es 2. Su doble es 4 y una unidad más que 4 es 5. Por eso el código es 245."
+      },
+      {
+        prompt: "Tres llaves están en fila: dorada, violeta y plateada. La dorada está a la izquierda de la violeta; la plateada está a la derecha de la violeta. ¿Cuál está en el centro?",
+        options: ["La dorada", "La violeta", "La plateada"],
+        correctIndex: 1,
+        explanation: "La dorada debe ir antes de la violeta y la plateada después. El único orden posible es dorada, violeta y plateada."
+      },
+      {
+        prompt: "La guardiana dice: «Si una puerta tiene una estrella, entonces tiene una cerradura dorada». Una puerta tiene una estrella. ¿Qué puedes concluir?",
+        options: ["Tiene una cerradura dorada", "No tiene cerradura", "Todas las puertas tienen una estrella"],
+        correctIndex: 0,
+        explanation: "La pista indica que toda puerta con estrella tiene cerradura dorada. Como esta puerta tiene estrella, se deduce que su cerradura es dorada. La pista no habla de todas las puertas."
+      }
+    ]
   }
 ];
