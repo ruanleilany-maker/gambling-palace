@@ -44,7 +44,7 @@ export const games = [
     duration: "5 minutos",
     description:
       "Organiza recursos ficticios, prioriza necesidades y aprende a administrar tu dinero.",
-    available: false,
+    available: true,
     questions: []
   },
   {

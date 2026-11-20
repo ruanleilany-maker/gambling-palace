@@ -15,6 +15,8 @@ import {
 import { games } from "../data/games.js";
 import "../styles/games.css";
 
+import BudgetGame from "./BudgetGame.jsx";
+
 const categories = ["Todas", "Probabilidad", "Finanzas", "Lógica"];
 
 const icons = {
@@ -26,28 +28,32 @@ const icons = {
 export default function Games() {
   const [category, setCategory] = useState("Todas");
   const [playing, setPlaying] = useState(false);
+  const [selectedGameId, setSelectedGameId] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [choice, setChoice] = useState(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
-  const currentGame = games.find(game => game.available);
+  const currentGame = games.find(
+  game => game.id === selectedGameId
+);
   const visibleGames = games.filter(
     game => category === "Todas" || game.category === category
   );
 
-  const question = currentGame.questions[questionIndex];
+  const question = currentGame?.questions[questionIndex];
 
-  function startGame() {
-    setPlaying(true);
-    setQuestionIndex(0);
-    setChoice(null);
-    setAnswered(false);
-    setScore(0);
-    setFinished(false);
-    window.scrollTo(0, 0);
-  }
+ function startGame(game) {
+  setSelectedGameId(game.id);
+  setPlaying(true);
+  setQuestionIndex(0);
+  setChoice(null);
+  setAnswered(false);
+  setScore(0);
+  setFinished(false);
+  window.scrollTo(0, 0);
+}
 
   function checkAnswer() {
     if (choice === null || answered) return;
@@ -75,6 +81,10 @@ export default function Games() {
     setFinished(false);
     window.scrollTo(0, 0);
   }
+
+if (playing && currentGame?.id === "presupuesto") {
+  return <BudgetGame onBack={goToCatalog} />;
+}
 
   if (playing) {
     return (
@@ -116,7 +126,7 @@ export default function Games() {
                 <div className="pg-actions">
                   <button
                     className="btn btn-primary"
-                    onClick={startGame}
+                    onClick={() => startGame(currentGame)}
                   >
                     <RotateCcw size={18} />
                     Volver a practicar
@@ -138,7 +148,7 @@ export default function Games() {
             ) : (
               <div className="pg-quiz-card">
                 <span className="eyebrow">
-                  PALACE GAMES · PROBABILIDAD
+                  {`PALACE GAMES · ${currentGame.category.toUpperCase()}`}
                 </span>
 
                 <h1>{currentGame.title}</h1>
@@ -313,7 +323,7 @@ export default function Games() {
                   {game.available ? (
                     <button
                       className="btn btn-primary"
-                      onClick={startGame}
+                      onClick={() => startGame(game)}
                     >
                       Comenzar desafío
                       <ArrowRight size={17} />

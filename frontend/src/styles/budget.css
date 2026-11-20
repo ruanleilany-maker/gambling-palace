@@ -1,0 +1,161 @@
+
+/* PRESUPUESTO INTELIGENTE */
+
+.bg-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.bg-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bg-intro h1 {
+  margin: 0;
+}
+
+.bg-intro p {
+  color: #C9C2B8;
+  line-height: 1.8;
+}
+
+.bg-objective {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #755A31;
+  border-radius: 12px;
+  background: #2B103D;
+}
+
+.bg-objective svg {
+  flex-shrink: 0;
+  color: #D4AF37;
+}
+
+.bg-objective strong {
+  color: #F1D67A;
+}
+
+.bg-objective p {
+  color: #C9C2B8;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+.bg-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bg-summary > div {
+  background: #241C30;
+  border: 1px solid #58466B;
+  padding: 18px;
+  border-radius: 12px;
+  min-width: 0;
+}
+
+.bg-summary span {
+  display: block;
+  color: #C9C2B8;
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+}
+
+.bg-summary strong {
+  font-size: 1.5rem;
+  color: #F1D67A;
+}
+
+.bg-summary .bg-negative {
+  color: #FF8888;
+}
+
+.bg-controls {
+  display: grid;
+  gap: 20px;
+}
+
+.bg-control {
+  padding: 20px;
+  background: #21192B;
+  border: 1px solid #51405D;
+  border-radius: 12px;
+}
+
+.bg-control-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bg-control-heading label {
+  color: #F5EFE3;
+  font-weight: 500;
+}
+
+.bg-control-heading strong {
+  color: #F1D67A;
+}
+
+.bg-control input[type="range"] {
+  width: 100%;
+  accent-color: #D4AF37;
+  cursor: pointer;
+}
+
+.bg-control input:focus-visible {
+  outline: 2px solid #F1D67A;
+  outline-offset: 5px;
+}
+
+.bg-control small {
+  display: block;
+  color: #C9C2B8;
+  margin-top: 12px;
+}
+
+.bg-warning {
+  color: #FFB2B2;
+}
+
+.bg-feedback {
+  padding: 25px;
+  background: #2B103D;
+  border: 1px solid #8A69AE;
+  border-radius: 14px;
+}
+
+.bg-feedback h2 {
+  color: #F1D67A;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.bg-feedback p {
+  color: #F5EFE3;
+  line-height: 1.8;
+}
+
+.bg-feedback .bg-lesson {
+  margin-top: 16px;
+  color: #D8CAE0;
+}
+
+@media (max-width: 700px) {
+  .bg-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .bg-control {
+    padding: 15px;
+  }
+}
