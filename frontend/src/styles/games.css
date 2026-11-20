@@ -1,0 +1,380 @@
+
+/* PALACE GAMES - ROYAL PALACE */
+
+.pg-page {
+  min-height: 100vh;
+  background: #0B0A0F;
+  color: #F5EFE3;
+}
+
+.pg-section {
+  background:
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(95, 35, 150, 0.2),
+      transparent 45%
+    ),
+    #0B0A0F;
+}
+
+.pg-header {
+  text-align: center;
+  max-width: 790px;
+  margin: 0 auto 90px;
+}
+
+.pg-header h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  color: #F5EFE3;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+.pg-header h1 span,
+.pg-heading h2 {
+  color: #F1D67A;
+}
+
+.pg-header h2 {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  margin-bottom: 22px;
+}
+
+.pg-header p {
+  color: #C9C2B8;
+  line-height: 1.9;
+  max-width: 670px;
+  margin: 0 auto;
+}
+
+.pg-assurance {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  color: #E8D89F;
+  font-size: 0.8rem;
+}
+
+.pg-heading {
+  margin-bottom: 28px;
+}
+
+.pg-heading h2 {
+  margin-top: 12px;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.pg-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.pg-filter {
+  padding: 11px 18px;
+  color: #C9C2B8;
+  background: #1A1522;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 30px;
+}
+
+.pg-filter.active,
+.pg-filter:hover {
+  background: #D4AF37;
+  color: #0B0A0F;
+}
+
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.pg-card {
+  min-width: 0;
+  padding: 28px;
+  background: linear-gradient(145deg, #21192C, #15131C);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.pg-card:hover {
+  transform: translateY(-5px);
+  border-color: #D4AF37;
+}
+
+.pg-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pg-icon {
+  width: 65px;
+  height: 65px;
+  background: #2B103D;
+  color: #F1D67A;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+}
+
+.pg-level,
+.pg-category {
+  font-size: 0.72rem;
+  color: #A98BEA;
+}
+
+.pg-category {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.pg-card h3 {
+  color: #F1D67A;
+  font-family: "Cinzel", serif;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.pg-card p {
+  color: #C9C2B8;
+  font-size: 0.86rem;
+  line-height: 1.8;
+  flex: 1;
+}
+
+.pg-duration {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #C9C2B8;
+  font-size: 0.8rem;
+}
+
+.pg-card .btn {
+  width: 100%;
+  white-space: normal;
+}
+
+.pg-coming {
+  padding: 14px;
+  text-align: center;
+  color: #C9C2B8;
+  background: #2B2035;
+  border-radius: 9px;
+}
+
+.pg-note {
+  text-align: center;
+  color: #A9A0B3;
+  margin-top: 38px;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+/* PANTALLA DEL DESAFÍO */
+
+.pg-play-layout {
+  max-width: 850px;
+}
+
+.pg-back {
+  background: transparent;
+  border: none;
+  color: #F1D67A;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pg-quiz-card {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 20px;
+  background: #191421;
+  padding: clamp(22px, 4vw, 45px);
+}
+
+.pg-quiz-card h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  color: #F1D67A;
+  margin: 18px 0 30px;
+}
+
+.pg-progress-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #C9C2B8;
+  font-size: 0.85rem;
+}
+
+.pg-progress {
+  width: 100%;
+  height: 10px;
+  margin: 15px 0 35px;
+  accent-color: #D4AF37;
+}
+
+.pg-fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.pg-fieldset legend {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.pg-options {
+  display: grid;
+  gap: 12px;
+}
+
+.pg-option {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #241C30;
+  border: 1px solid #4E3D60;
+  border-radius: 12px;
+  padding: 17px;
+  cursor: pointer;
+}
+
+.pg-option.selected {
+  border-color: #D4AF37;
+  background: #342442;
+}
+
+.pg-option input {
+  accent-color: #D4AF37;
+}
+
+.pg-option:focus-within {
+  outline: 2px solid #F1D67A;
+  outline-offset: 2px;
+}
+
+.pg-feedback {
+  margin-top: 25px;
+  padding: 22px;
+  background: #2B103D;
+  border-radius: 12px;
+  line-height: 1.8;
+}
+
+.pg-feedback strong {
+  color: #F1D67A;
+}
+
+.pg-feedback p {
+  color: #F5EFE3;
+  margin-top: 10px;
+}
+
+.pg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.pg-actions .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pg-result {
+  text-align: center;
+}
+
+.pg-result > p {
+  margin: 15px auto;
+  color: #C9C2B8;
+  line-height: 1.8;
+}
+
+.pg-gold {
+  color: #D4AF37;
+}
+
+.pg-result .pg-score {
+  font-family: "Cinzel", serif;
+  font-size: 3.4rem;
+  color: #F1D67A;
+}
+
+.pg-result .pg-actions {
+  justify-content: center;
+}
+
+.pg-result small {
+  display: block;
+  margin-top: 25px;
+  color: #A9A0B3;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 960px) {
+  .pg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .pg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-header {
+    margin-bottom: 55px;
+  }
+
+  .pg-card {
+    padding: 22px;
+  }
+
+  .pg-filters {
+    gap: 8px;
+  }
+
+  .pg-filter {
+    padding: 10px 13px;
+    font-size: 0.8rem;
+  }
+
+  .pg-actions {
+    flex-direction: column;
+  }
+
+  .pg-actions .btn {
+    width: 100%;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-card {
+    transition: none;
+  }
+
+  .pg-card:hover {
+    transform: none;
+  }
+}
