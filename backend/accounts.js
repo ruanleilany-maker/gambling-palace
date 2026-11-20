@@ -29,7 +29,7 @@ function authLimit(req, res, next) {
   next();
 }
 function validCredentials(email, password) {
-  return typeof email === 'string' && email.length <= 254 && emailPattern.test(email.trim()) && typeof password === 'string' && password.length >= 12 && password.length <= 128;
+  return typeof email === 'string' && email.length <= 254 && emailPattern.test(email.trim()) && typeof password === 'string' && password.length >= 8 && password.length <= 128;
 }
 export async function installAccounts(app) {
   const db = new DatabaseSync(process.env.DB_PATH || './palace.sqlite');
@@ -56,7 +56,7 @@ export async function installAccounts(app) {
   const adminOnly = (req, res, next) => req.user.role === 'admin' ? next() : res.status(403).json({ error: 'Acceso exclusivo de administración.' });
   app.post('/api/register', authLimit, async (req, res) => {
     const { email, password } = req.body || {};
-    if (!validCredentials(email, password)) return res.status(400).json({ error: 'Usa un correo válido y una contraseña de 12 a 128 caracteres.' });
+    if (!validCredentials(email, password)) return res.status(400).json({ error: 'Usa un correo válido y una contraseña de 8 a 128 caracteres.' });
     try { db.prepare('INSERT INTO users (email, password_hash) VALUES (?, ?)').run(normalize(email), await passwordHash(password)); return res.status(201).json({ ok: true }); }
     catch (error) { if (String(error.message).includes('UNIQUE')) return res.status(409).json({ error: 'No se pudo crear la cuenta con ese correo.' }); throw error; }
   });
@@ -73,7 +73,7 @@ export async function installAccounts(app) {
   app.post('/api/logout', authenticate, (req, res) => { sessions.delete(req.sessionKey); res.json({ ok: true }); });
   app.put('/api/account/password', authenticate, authLimit, async (req, res) => {
     const { currentPassword, newPassword } = req.body || {};
-    if (typeof currentPassword !== 'string' || !currentPassword || currentPassword.length > 128 || typeof newPassword !== 'string' || newPassword.length < 12 || newPassword.length > 128) return res.status(400).json({ error: 'Introduce la contraseña actual y una nueva de 12 a 128 caracteres.' });
+    if (typeof currentPassword !== 'string' || !currentPassword || currentPassword.length > 128 || typeof newPassword !== 'string' || newPassword.length < 8 || newPassword.length > 128) return res.status(400).json({ error: 'Introduce la contraseña actual y una nueva de 8 a 128 caracteres.' });
     const user = db.prepare('SELECT password_hash FROM users WHERE id = ?').get(req.user.id);
     if (!user || !(await passwordMatches(currentPassword, user.password_hash))) return res.status(401).json({ error: 'La contraseña actual es incorrecta.' });
     if (currentPassword === newPassword) return res.status(400).json({ error: 'La nueva contraseña debe ser diferente.' });

@@ -17,3 +17,8 @@
 .account-delete { margin-top: 48px; padding-top: 24px; border-top: 1px solid #493657; }
 .account-delete h2 { font-size: 1.25rem; margin-bottom: 10px; }
 .account-delete p { margin-bottom: 18px; line-height: 1.7; }
+
+.password-field { position: relative; width: 100%; }
+.project-form .password-field input { padding-right: 52px; }
+.password-toggle { position: absolute; top: 50%; right: 6px; transform: translateY(-50%); display: grid; place-items: center; width: 42px; height: 42px; padding: 0; color: #e9cd79; background: transparent; border: 0; border-radius: 6px; cursor: pointer; }
+.password-toggle:focus-visible { outline: 2px solid #e9cd79; outline-offset: 1px; }
