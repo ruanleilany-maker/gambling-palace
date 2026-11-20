@@ -145,8 +145,7 @@ if (playing && currentGame?.id === "presupuesto") {
                 </div>
 
                 <small>
-                  Resultado de demostración: todavía no se
-                  guarda en una cuenta.
+                  Tu resultado puede consultarse en Palace Progress.
                 </small>
               </div>
             ) : (

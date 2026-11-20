@@ -2,7 +2,7 @@
 
 El servidor conserva `/api/health` y ofrece `POST /api/ai`. Usa Node 24 y npm.
 
-1. En `backend`, ejecuta `npm install`. Copia `.env.example` como `.env` y coloca tu clave propia en `GEMINI_API_KEY`. Nunca subas `.env` ni pegues la clave en el frontend. La clave se crea en Google AI Studio; no se ha creado ninguna por ti.
+1. En `backend`, ejecuta `npm install`. Copia `.env.example` como `.env` y coloca tu clave propia en `GEMINI_API_KEY`. Nunca subas `.env` ni pegues la clave en el frontend. La clave se obtiene mediante Google AI Studio.
 2. En `backend`, ejecuta `npm run dev`. En otra terminal, en `frontend`, ejecuta `npm install` y `npm run dev`. Vite redirige `/api` al servidor local en el puerto 3001. Abre la dirección que indique Vite y entra en Palace AI.
 3. `npm run build` en `frontend` verifica el compilado.
 
