@@ -1,19 +1,23 @@
 # 👑 Gambling Palace — Más allá del azar
 
-Proyecto educativo para jóvenes de 15 a 24 años. No incluye apuestas, depósitos ni premios monetarios.
+Gambling Palace es un proyecto educativo que invita a jóvenes de 15 a 24 años a explorar la probabilidad, las finanzas personales y el pensamiento crítico. Sus actividades no incluyen apuestas, depósitos ni premios monetarios.
 
-## Lo que incluye
+## Experiencias
 
-- Tres juegos educativos de probabilidad, presupuesto y lógica.
-- Tres módulos de Academy, con lecciones y preguntas.
-- Palace Progress guarda módulos y retos en la cuenta al iniciar sesión, o en el navegador si se usa sin cuenta. El progreso anterior sin cuenta no se importa automáticamente.
-- Registro, acceso y panel de administración de avisos mediante el servidor y SQLite.
-- Página de impacto y formulario que prepara un correo a ruanleilany@gmail.com para que la persona lo revise y envíe desde su aplicación de correo.
-- Palace AI conectado por medio de un servidor Express configurable. Necesita una clave API y acceso habilitado; consulta [backend/README.md](backend/README.md).
+- **Palace Games:** tres retos de probabilidad, presupuesto y lógica.
+- **Palace Academy:** lecciones y preguntas sobre probabilidad, finanzas y decisiones.
+- **Palace Progress:** muestra los retos y módulos completados. El progreso se guarda en el navegador sin cuenta o en el servidor al iniciar sesión.
+- **Palace AI:** tutor que responde preguntas educativas mediante Gemini, cuando el servidor y la clave están configurados.
+- **Cuenta:** permite registrarse, iniciar sesión, cambiar la contraseña y eliminar la cuenta con su progreso.
+- **Contacto e impacto:** información sobre el proyecto y un formulario que abre la aplicación de correo de la persona usuaria.
 
-## Ejecutar en tu computadora
+## Tecnologías
 
-Se recomienda Node 24. Abre dos terminales en la carpeta del proyecto:
+El frontend está construido con React y Vite. El backend utiliza Node.js y Express; SQLite almacena las cuentas y el progreso en el servidor. Palace AI se conecta a la API de Gemini desde el backend: la clave no se coloca en el navegador.
+
+## Ejecutar localmente
+
+Se recomienda Node.js 24. Abre dos terminales en la carpeta del proyecto:
 
 ```bash
 cd backend
@@ -27,10 +31,27 @@ npm install
 npm run dev
 ```
 
-Abre la dirección que indique Vite. Para verificar el compilado, ejecuta `npm run build` dentro de `frontend`. El servidor puede responder en `http://localhost:3001/api/health`. Configura primero `backend/.env` para usar la IA; nunca subas tu clave a GitHub.
+Abre la dirección que indique Vite, normalmente `http://localhost:5173`. Para comprobar el servidor, visita `http://localhost:3001/api/health`. La configuración de Palace AI se explica en [backend/README.md](backend/README.md). Nunca compartas ni subas el archivo `backend/.env` o la base de datos.
 
-## Publicación y pendientes
+Para comprobar la compilación del frontend:
 
-El flujo de GitHub Actions publica el frontend en GitHub Pages cuando se sube a la rama principal y Pages está configurado para usar Actions. GitHub Pages no ejecuta el backend. Necesitas alojar Express por separado con HTTPS y configurar sus variables privadas. Para conectar Pages, añade en GitHub la variable de repositorio `VITE_API_BASE_URL` con la URL pública del backend y configura en el servidor `ALLOWED_ORIGINS` con el origen exacto del sitio. Consulta el README del backend para seguridad, costos y límites.
+```bash
+cd frontend
+npm run build
+```
 
-Las cuentas y el panel requieren el backend y una base de datos persistente. La recuperación de contraseñas, verificación de correo y gestión de consentimiento para menores todavía no están implementadas; no usar cuentas públicamente hasta completar y revisar esas funciones. El formulario de contacto depende de una aplicación de correo instalada y no envía por sí solo. Palace AI se probó localmente con Gemini. Las condiciones actuales de Gemini API prohíben usar el servicio en aplicaciones dirigidas a menores de 18 años o que probablemente sean accedidas por ellos; antes de publicar este proyecto dirigido a jóvenes de 15 a 24 años es necesario elegir otro proveedor compatible o replantear su público y acceso. Consulta https://ai.google.dev/gemini-api/terms. La publicación, disponibilidad de servicios y cantidad de commits deben verificarse en GitHub; no se asumen completadas.
+## Enlace y despliegue
+
+El frontend se publica mediante GitHub Pages. El servidor requiere un alojamiento independiente, con HTTPS y la clave configurada como variable privada. La base de datos necesita almacenamiento persistente para conservar cuentas y progreso. La configuración está descrita en [backend/README.md](backend/README.md).
+
+El enlace público existente es [Gambling Palace](https://ruanleilany-maker.github.io/gambling-palace/). La versión más reciente está en una rama de revisión y aún debe incorporarse a la versión publicada.
+
+## Consideraciones para la presentación
+
+- La aplicación tiene fines educativos. Las respuestas de Palace AI pueden contener errores y no sustituyen asesoría financiera profesional.
+- Las preguntas enviadas a Palace AI se procesan mediante Gemini; no se deben escribir datos personales. El tratamiento de datos se describe en la sección Privacidad de la página.
+- Las condiciones de Gemini API restringen su uso en aplicaciones dirigidas a menores de 18 años o que probablemente sean usadas por ellos. Antes de poner Palace AI a disposición del público objetivo del proyecto, se debe revisar esta restricción y definir una alternativa compatible. Consulta las [condiciones de Gemini](https://ai.google.dev/gemini-api/terms).
+- Las cuentas aún no ofrecen recuperación de contraseña ni verificación de correo. Antes de abrir el registro al público, es necesaria una revisión de seguridad y de la privacidad y el consentimiento aplicables a menores.
+- El contacto prepara un mensaje en la aplicación de correo: el envío lo realiza la persona usuaria.
+
+Para el recorrido de demostración, consulta [GUIA_PRESENTACION.md](GUIA_PRESENTACION.md).
