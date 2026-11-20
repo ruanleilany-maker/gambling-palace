@@ -71,6 +71,18 @@ export async function installAccounts(app) {
   });
   app.get('/api/me', authenticate, (req, res) => res.json({ user: userView(req.user) }));
   app.post('/api/logout', authenticate, (req, res) => { sessions.delete(req.sessionKey); res.json({ ok: true }); });
+  app.put('/api/account/password', authenticate, authLimit, async (req, res) => {
+    const { currentPassword, newPassword } = req.body || {};
+    if (typeof currentPassword !== 'string' || !currentPassword || currentPassword.length > 128 || typeof newPassword !== 'string' || newPassword.length < 12 || newPassword.length > 128) return res.status(400).json({ error: 'Introduce la contraseña actual y una nueva de 12 a 128 caracteres.' });
+    const user = db.prepare('SELECT password_hash FROM users WHERE id = ?').get(req.user.id);
+    if (!user || !(await passwordMatches(currentPassword, user.password_hash))) return res.status(401).json({ error: 'La contraseña actual es incorrecta.' });
+    if (currentPassword === newPassword) return res.status(400).json({ error: 'La nueva contraseña debe ser diferente.' });
+    const hash = await passwordHash(newPassword);
+    const result = db.prepare('UPDATE users SET password_hash = ? WHERE id = ? AND password_hash = ?').run(hash, req.user.id, user.password_hash);
+    if (!result.changes) return res.status(409).json({ error: 'La cuenta cambió. Vuelve a iniciar sesión e inténtalo de nuevo.' });
+    for (const [key, session] of sessions) if (session.userId === req.user.id && key !== req.sessionKey) sessions.delete(key);
+    res.json({ ok: true });
+  });
   app.delete('/api/account', authenticate, authLimit, async (req, res) => {
     const password = req.body?.password;
     if (typeof password !== 'string' || !password || password.length > 128) return res.status(400).json({ error: 'Introduce tu contraseña.' });
