@@ -9,6 +9,7 @@ import Academy from "./pages/Academy.jsx";
 import AcademyModule from "./pages/AcademyModule.jsx";
 import { probabilityLessons } from "./data/probabilityLessons.js";
 import { financeLessons } from "./data/financeLessons.js";
+import { decisionLessons } from "./data/decisionLessons.js";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
 const pending = {
@@ -50,6 +51,8 @@ export default function App() {
         <Route path="/academy" element={<Academy />} />
         <Route path="/academy/probabilidad" element={<AcademyModule key="probabilidad" title="Probabilidad sin mitos" lessons={probabilityLessons} completionText="Terminaste las tres lecciones de Probabilidad sin mitos. Cada idea es una herramienta para pensar con más claridad sobre el azar." />} />
         <Route path="/academy/finanzas" element={<AcademyModule key="finanzas" title="Finanzas en acción" lessons={financeLessons} completionText="Terminaste las tres lecciones de Finanzas en acción. Ya tienes herramientas para planificar, priorizar y ahorrar con una meta." />} />
+
+        <Route path="/academy/decisiones" element={<AcademyModule key="decisiones" title="Decisiones con criterio" lessons={decisionLessons} completionText="Terminaste las tres lecciones de Decisiones con criterio. Practica comparar opciones, examinar información y reconocer riesgos en tus decisiones cotidianas." />} />
 
         {Object.entries(pending).map(
           ([path, [title, description]]) => (

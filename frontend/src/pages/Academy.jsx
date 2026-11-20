@@ -45,18 +45,18 @@ export default function Academy() {
                 <article className="academy-card" key={module.id}>
                   <div className="academy-card-top">
                     <div className="academy-icon"><Icon size={29} aria-hidden="true" /></div>
-                    <span className="academy-status">{module.id !== "decisiones" ? "Disponible" : "Próximamente"}</span>
+                    <span className="academy-status">Disponible</span>
                   </div>
                   <span className="academy-category">{module.category}</span>
                   <h3>{module.title}</h3>
                   <p>{module.description}</p>
                   <div className="academy-topics"><BookOpen size={16} aria-hidden="true" /> <span>{module.topics}</span></div>
-                  {module.id !== "decisiones" ? <Link className="btn btn-primary academy-start" to={`/academy/${module.id}`}>Comenzar módulo</Link> : <div className="academy-coming">Lecciones en preparación</div>}
+                  <Link className="btn btn-primary academy-start" to={`/academy/${module.id}`}>Comenzar módulo</Link>
                 </article>
               );
             })}
           </div>
-          <p className="academy-note">El módulo de Decisiones estará disponible en una próxima etapa.</p>
+          <p className="academy-note">Explora los tres módulos y aprende a tu ritmo.</p>
         </div>
       </section>
     </main>
