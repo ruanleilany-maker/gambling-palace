@@ -29,3 +29,6 @@ Thumbs.db
 
 #entorno virtual
 .venv/
+# Base de datos local y archivos temporales de SQLite
+*.sqlite
+*.sqlite-*

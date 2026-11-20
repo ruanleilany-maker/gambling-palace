@@ -8,6 +8,7 @@ import {
   Trash2
 } from "lucide-react";
 
+import AIResponse from "../components/AIResponse.jsx";
 import "../styles/ai.css";
 
 const suggestions = [
@@ -20,22 +21,22 @@ export default function PalaceAI() {
   const [messages, setMessages] = useState([]);
   const [question, setQuestion] = useState("");
 
-  function sendMessage(event) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  async function sendMessage(event) {
     event.preventDefault();
-
     const text = question.trim();
-
-    if (!text) return;
-
-    setMessages(previous => [
-      ...previous,
-      {
-        id: previous.length + 1,
-        content: text
-      }
-    ]);
-
-    setQuestion("");
+    if (!text || loading) return;
+    setMessages(previous => [...previous, { id: crypto.randomUUID(), role: "user", content: text }]);
+    setQuestion(""); setError(""); setLoading(true);
+    try {
+      const base = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+      const response = await fetch(base + "/api/ai", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "No se pudo responder.");
+      setMessages(previous => [...previous, { id: crypto.randomUUID(), role: "bot", content: data.answer }]);
+    } catch (err) { setError(err.message === "Failed to fetch" ? "No se pudo conectar con el servidor." : err.message); }
+    finally { setLoading(false); }
   }
 
   return (
@@ -71,14 +72,15 @@ export default function PalaceAI() {
               <div>
                 <strong>Palace AI</strong>
                 <small>
-                  Interfaz de demostración
+                  Tutor educativo
                 </small>
               </div>
 
               <button
                 type="button"
                 className="ai-clear"
-                onClick={() => setMessages([])}
+                onClick={() => { setMessages([]); setError(""); }}
+                disabled={loading}
                 aria-label="Limpiar conversación"
                 title="Limpiar conversación"
               >
@@ -103,25 +105,25 @@ export default function PalaceAI() {
                   </p>
 
                   <p>
-                    Esta es una demostración visual.
-                    Las respuestas automáticas se
-                    activarán en una próxima etapa.
+                    Haz una pregunta para comenzar.
                   </p>
                 </div>
               </div>
 
               {messages.map(message => (
                 <div
-                  className="ai-message ai-message-user"
+                  className={`ai-message ai-message-${message.role}`}
                   key={message.id}
                 >
                   <div className="ai-bubble">
-                    {message.content}
+                    {message.role === "bot" ? <AIResponse text={message.content} /> : message.content}
                   </div>
                 </div>
               ))}
             </div>
 
+            {loading && <p role="status">Palace AI está pensando…</p>}
+            {error && <p role="alert">{error}</p>}
             <div className="ai-bottom">
 
               <p className="ai-suggestions-title">
@@ -163,7 +165,7 @@ export default function PalaceAI() {
                   <button
                     type="submit"
                     aria-label="Enviar mensaje"
-                    disabled={!question.trim()}
+                    disabled={!question.trim() || loading}
                   >
                     <Send size={20} />
                   </button>
@@ -172,9 +174,7 @@ export default function PalaceAI() {
 
               <p className="ai-disclaimer">
                 <ShieldCheck size={16} />
-                Modo demostración: los mensajes
-                permanecen en esta página y
-                todavía no se envían a una IA.
+                Tus preguntas se envían al servicio de IA para generar respuestas. No compartas datos personales. Cada pregunta se procesa por separado.
               </p>
 
             </div>

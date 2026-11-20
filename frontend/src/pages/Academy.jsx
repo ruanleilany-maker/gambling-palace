@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../utils/api.js";
 import { Link } from "react-router";
 import { BookOpen, Brain, Compass, Sparkles, Wallet } from "lucide-react";
 import { academyModules } from "../data/academy.js";
@@ -9,6 +10,8 @@ const icons = { Probabilidad: Brain, Finanzas: Wallet, Decisiones: Compass };
 
 export default function Academy() {
   const [category, setCategory] = useState("Todos");
+  const [notices, setNotices] = useState([]);
+  useEffect(() => { api("/notices").then(data => setNotices(data.items)).catch(() => {}); }, []);
   const visibleModules = academyModules.filter(
     module => category === "Todos" || module.category === category
   );
@@ -24,6 +27,7 @@ export default function Academy() {
             <p>Explora tres módulos educativos para comprender el azar, cuidar tus finanzas y pensar con criterio.</p>
           </header>
 
+          {notices.length > 0 && <section className="academy-heading" aria-label="Avisos"><h2>Avisos</h2>{notices.map(item => <article key={item.id}><h3>{item.title}</h3><p>{item.body}</p></article>)}</section>}
           <div className="academy-heading">
             <span className="eyebrow">TU CAMINO DE APRENDIZAJE</span>
             <h2>Explora los módulos</h2>

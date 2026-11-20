@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { recordProgress } from "../utils/progress.js";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, BookOpen, RotateCcw } from "lucide-react";
 import "../styles/academy.css";
@@ -12,6 +13,7 @@ export default function AcademyModule({ title, lessons, completionText }) {
 
   function next() {
     if (index === lessons.length - 1) {
+      recordProgress(`academy-${title}`, title, "Módulo completado");
       setCompleted(true);
     } else {
       setIndex(index + 1);
@@ -40,7 +42,7 @@ export default function AcademyModule({ title, lessons, completionText }) {
               <span className="eyebrow">MÓDULO COMPLETADO</span>
               <h1>¡Buen trabajo!</h1>
               <p>{completionText}</p>
-              <p className="academy-disclaimer">Tu avance es temporal y todavía no se guarda en una cuenta.</p>
+              <p className="academy-disclaimer">Tu avance se guarda en tu cuenta si has iniciado sesión; de lo contrario, en este navegador.</p>
               <div className="academy-lesson-actions">
                 <button type="button" className="btn btn-primary" onClick={restart}><RotateCcw size={17} /> Repasar módulo</button>
                 <Link className="btn btn-outline" to="/academy">Volver al catálogo</Link>

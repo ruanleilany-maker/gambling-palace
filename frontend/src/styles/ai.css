@@ -310,3 +310,12 @@
     transition: none;
   }
 }
+
+/* Formato de las respuestas de Palace AI */
+.ai-formatted { white-space: normal; }
+.ai-formatted > * + * { margin-top: 12px; }
+.ai-formatted h3 { color: #F1D67A; font-size: 1.05rem; line-height: 1.4; }
+.ai-formatted strong { display: inline; margin: 0; color: #F1D67A; }
+.ai-formatted ul, .ai-formatted ol { padding-left: 1.4rem; }
+.ai-formatted li + li { margin-top: 7px; }
+.ai-formatted hr { border: 0; border-top: 1px solid #604B79; }

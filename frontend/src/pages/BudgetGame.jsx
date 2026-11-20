@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { recordProgress } from "../utils/progress.js";
 import {
   ArrowLeft,
   RotateCcw,
@@ -203,7 +204,7 @@ export default function BudgetGame({ onBack }) {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => setEvaluated(true)}
+                onClick={() => { setEvaluated(true); if (success) recordProgress("game-presupuesto", "Presupuesto inteligente", "Reto completado"); }}
               >
                 Evaluar mi presupuesto
               </button>

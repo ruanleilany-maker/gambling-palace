@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { recordProgress } from "../utils/progress.js";
 import {
   ArrowLeft,
   ArrowRight,
@@ -67,6 +68,7 @@ export default function Games() {
 
   function nextQuestion() {
     if (questionIndex === currentGame.questions.length - 1) {
+      recordProgress(`game-${currentGame.id}`, currentGame.title, `${score} de ${currentGame.questions.length} respuestas correctas`);
       setFinished(true);
       return;
     }

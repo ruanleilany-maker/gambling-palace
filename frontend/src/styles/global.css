@@ -235,3 +235,7 @@
   }
 }
 
+
+.welcome-message { background: #302440; border-bottom: 1px solid #7c6535; color: #f8edce; }
+.welcome-content { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+.welcome-content button { border: 0; background: transparent; color: inherit; font-size: 1.7rem; line-height: 1; cursor: pointer; }

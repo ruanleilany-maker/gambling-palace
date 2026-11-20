@@ -1,0 +1,15 @@
+.project-page { min-height: 65vh; padding: 110px 0 80px; }
+.project-content { max-width: 850px; }
+.project-content h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 15px 0 25px; }
+.project-content h1 span { color: #d4af37; }
+.project-content > p { line-height: 1.8; margin: 18px 0; }
+.project-list { display: grid; gap: 16px; margin: 28px 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.project-list article { background: #21182d; border: 1px solid #493657; border-radius: 12px; padding: 22px; }
+.project-list h2 { font-size: 1.2rem; margin-bottom: 10px; }
+.project-list p { line-height: 1.6; }
+.project-form { display: grid; gap: 12px; margin: 30px 0; }
+.project-form input, .project-form textarea { background: #21182d; border: 1px solid #725c79; border-radius: 8px; color: white; padding: 12px; font: inherit; width: 100%; }
+.project-form button { justify-self: start; }
+.project-content a:not(.btn) { color: #e9cd79; }
+
+.account-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }

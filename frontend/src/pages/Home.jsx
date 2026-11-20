@@ -1,4 +1,5 @@
-import { Link } from 'react-router';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import { ArrowRight, ArrowUpRight, Sparkles, ShieldCheck, BookOpenText, GraduationCap, Compass, Mail, Crown } from 'lucide-react';
 import ExperienceCard from '../components/ExperienceCard.jsx';
 import { experiences, pillars, steps, highlights } from '../data/content.js';
