@@ -5,13 +5,10 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Games from "./pages/Games.jsx";
+import Academy from "./pages/Academy.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
 const pending = {
-  academy: [
-    "Palace Academy",
-    "Microlecciones, evaluaciones y refuerzo educativo."
-  ],
   ai: [
     "Palace AI",
     "Mentor de IA personalizado para el aprendizaje."
@@ -47,6 +44,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/games" element={<Games />} />
+        <Route path="/academy" element={<Academy />} />
 
         {Object.entries(pending).map(
           ([path, [title, description]]) => (
